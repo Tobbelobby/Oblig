@@ -1,92 +1,19 @@
 {
     "CHAMPIONS": {
-        "Asir": 4,
-        "Cactus": 2,
+        "Asir": 0,
+        "Cactus": 0,
         "Dr. Yi": 0,
-        "Guan": 10,
-        "Katina": 2,
-        "Luanne": 1,
-        "Siva": 9,
-        "Twist": 5,
-        "Vain": 17
+        "Guan": 0,
+        "Katina": 0,
+        "Luanne": 0,
+        "Siva": 0,
+        "Twist": 0,
+        "Vain": 0
     },
-    "MATCH": [
-        [
-            "2022-03-10 18:07:48.354829",
-            "{'Vain, Twist': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.PAPER: 2>), 'Guan, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Guan, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>), 'Vain, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Guan, Siva': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>), 'Vain, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "4",
-            "2"
-        ],
-        [
-            "2022-03-10 18:08:21.657030",
-            "{'Vain, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Siva, Dr. Yi': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Vain, Dr. Yi': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>), 'Siva, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Siva, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Vain, Dr. Yi': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "4",
-            "2"
-        ],
-        [
-            "2022-03-10 18:08:54.332181",
-            "{'Luanne, Katina': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>), 'Cactus, Asir': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Cactus, Katina': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>), 'Luanne, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Cactus, Katina': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>), 'Luanne, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>)}",
-            "2",
-            "4"
-        ],
-        [
-            "2022-03-10 18:42:34.261859",
-            "{'Guan, Twist': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.PAPER: 2>), 'Vain, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Vain, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Guan, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Guan, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Vain, Siva': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>)}",
-            "5",
-            "1"
-        ],
-        [
-            "2022-03-10 19:02:20.987764",
-            "{'Vain, Guan': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Cactus, Asir': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Cactus, Guan': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>), 'Vain, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Vain, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Cactus, Guan': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "4",
-            "2"
-        ],
-        [
-            "2022-03-10 19:11:51.605168",
-            "{'Twist, Guan': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>), 'Vain, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Twist, Guan': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>), 'Vain, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Vain, Siva': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>), 'Twist, Guan': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.SCISSORS: 3>)}",
-            "2",
-            "4"
-        ],
-        [
-            "2022-03-10 19:12:46.104704",
-            "{'Twist, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>), 'Vain, Asir': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Vain, Asir': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>), 'Twist, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>)}",
-            "{'Vain, Asir': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Twist, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>)}",
-            "3",
-            "3"
-        ],
-        [
-            "2022-03-10 20:23:01.341600",
-            "{'Vain, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Guan, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "{'Vain, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>), 'Guan, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>)}",
-            "{'Guan, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>), 'Vain, Twist': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "4",
-            "2"
-        ],
-        [
-            "2022-03-10 20:23:30.174187",
-            "{'Twist, Siva': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>), 'Vain, Guan': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.SCISSORS: 3>)}",
-            "{'Twist, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.PAPER: 2>), 'Vain, Guan': PairThrow(red=<Shape.ROCK: 1>, blue=<Shape.PAPER: 2>)}",
-            "{'Vain, Siva': PairThrow(red=<Shape.SCISSORS: 3>, blue=<Shape.ROCK: 1>), 'Twist, Guan': PairThrow(red=<Shape.PAPER: 2>, blue=<Shape.ROCK: 1>)}",
-            "4",
-            "2"
-        ]
-    ],
+    "MATCH": [],
     "OVERALL": {
-        "BLUE": 2,
-        "DRAW": 1,
-        "RED": 6
+        "BLUE": 0,
+        "DRAW": 0,
+        "RED": 0
     }
 }
