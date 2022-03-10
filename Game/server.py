@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
-from sqlite3 import connect
 from rich import print
-from rich.prompt import Prompt
 from rich.table import Table
-
-
 from socket import create_server
-from threading import Thread, Lock
+from threading import Thread
 from champlistloader import load_some_champs
-from core import Match, Shape, Team
+from core import Match, Shape, Team, PairThrow
 import pickle
 import time
-import sys
 
-la_players = []
+
+db = []
+all_connections = []
 player1 = []
 player2 = []
 
 sock = create_server(("localhost", 5555))
 sock.listen(2)
+
+def db_connection():
+    global champions
+    conn, address = sock.accept()
+    print("We are connected to:", address, "DB")
+    champions = conn.recv(2024)
+    db.append(conn)
+    main()
+
 
 
 def main():
@@ -28,25 +34,29 @@ def main():
     while True:
         conn, address = sock.accept()
         print("We are connected to:", address)
-        la_players.append(conn)
-        Thread(target = threaded_client , args=(conn,)).start()
+        all_connections.append(conn)
+        we = "! WELCOME TO THE GAME !"
+        conn.send(we.encode())
+        Thread(target = threaded_client).start()
 
 
-def threaded_client(conn):
-    re = "You are inn !"
-    conn.send(re.encode())
-    if len(la_players) != 2:
+def threaded_client():
+    if len(all_connections) != 2:
         time.sleep(3)
     else:
-        la_players[0].send(("red Player 1").encode())
-        time.sleep(0.5)
-        la_players[1].send(("blue Player 2").encode())
+        all_connections[0].send(("red Player 1").encode())
+        time.sleep(1)
+        all_connections[0].send(champions)
+        time.sleep(1)
+        all_connections[1].send(("blue Player 2").encode())
+        time.sleep(1)
+        all_connections[1].send(champions)
         to_players()
  
 
 def to_players():
-    p1 = la_players[0]
-    p2 = la_players[1]
+    p1 = all_connections[0]
+    p2 = all_connections[1]
     for _ in range(2):
         the_add(p1 ,player1, player2)
         the_add(p2 ,player2, player1)
@@ -55,6 +65,9 @@ def to_players():
 
 def the_add(player, player1, player2):
     player.send(("DIN").encode())
+    time.sleep(0.2)
+    e_list = pickle.dumps(player2)
+    player.send(e_list)
     while True:
         name = player.recv(2024).decode()
         match name:
@@ -74,12 +87,14 @@ def start_match(champions1, champions2, p1, p2):
         Team([champions[name] for name in champions1]),
         Team([champions[name] for name in champions2]),
     )
+    
+    
     match.play()
     print_match_summary(match, p1, p2)
 
 
 def print_match_summary(match: Match, p1, p2) -> None:
-
+    # m_result = pickle.dumps(match.rounds)
     EMOJI = {
         Shape.ROCK: ':raised_fist-emoji:',
         Shape.PAPER: ':raised_hand-emoji:',
@@ -99,15 +114,16 @@ def print_match_summary(match: Match, p1, p2) -> None:
         round_summary.add_column("Blue",
                                  style="blue",
                                  no_wrap=True)
-
         # Populate the table
         for key in round:
             red, blue = key.split(', ')
             round_summary.add_row(f'{red} {EMOJI[round[key].red]}',
                                   f'{blue} {EMOJI[round[key].blue]}')
+        db_round = pickle.dumps(round)
         champions_sending = pickle.dumps(round_summary)
         p1.send(champions_sending)
         p2.send(champions_sending)
+        db[0].send(db_round)
         time.sleep(1)
     # Print the score
     red_score, blue_score = match.score
@@ -120,18 +136,26 @@ def print_match_summary(match: Match, p1, p2) -> None:
     time.sleep(1)
     p2.send(str(blue_score).encode())
     time.sleep(1)
+    db[0].send(str(red_score).encode())
+    time.sleep(1)
+    db[0].send(str(blue_score).encode())
     end_clean_up()
 
 
 def end_clean_up():
-    global la_players
-    la_players.clear()
+    global all_connections
+    all_connections.pop(0)
+    all_connections.pop(0)
     player1.clear()
     player2.clear()
-    main()
-
+    print(len(all_connections))
+    if len(all_connections) < 2:
+        main()
+    else:
+        threaded_client()
 
     
 if __name__ == "__main__":
-    main()
+    while True:
+        db_connection()
 

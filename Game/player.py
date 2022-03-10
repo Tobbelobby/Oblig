@@ -2,13 +2,10 @@
 from rich import print
 from rich.prompt import Prompt
 from rich.table import Table
-
-
 from socket import create_connection
 from champlistloader import load_some_champs
 from core import Champion
-import pickle
-import sys
+import pickle, sys
 
 player1 = []
 player2 = []
@@ -34,7 +31,8 @@ def start():
             PLAYER = (PLAYER[0] + " " + PLAYER[1])
             print(PLAYER)
             print(COLOR)
-            champions = load_some_champs()
+            champions = sock.recv(2024)
+            champions = pickle.loads(champions)
             print_available_champs(champions)
             break
 
@@ -64,7 +62,6 @@ def print_available_champs(champions: dict[Champion]) -> None:
     # Populate the table
     for champion in champions.values():
         available_champs.add_row(*champion.str_tuple)
-
     print(available_champs)
     wating_room()
 
@@ -85,6 +82,9 @@ def input_champion(prompt: str,
 
     # Prompt the player to choose a champion and provide the reason why
     # certain champion cannot be selected
+    e_list = sock.recv(2024)
+    e_list = pickle.loads(e_list)
+    print(f"The enemy team {e_list}")
     while True:
         name = Prompt.ask(f'[{color}]{prompt}')
         if name in player1:
