@@ -4,7 +4,7 @@ from rich.table import Table
 from socket import create_server
 from threading import Thread
 from champlistloader import load_some_champs
-from core import Match, Shape, Team, PairThrow
+from core import Match, Shape, Team
 import pickle
 import time
 
@@ -45,11 +45,11 @@ def threaded_client():
         time.sleep(3)
     else:
         all_connections[0].send(("red Player 1").encode())
-        time.sleep(1)
+        time.sleep(0.1)
         all_connections[0].send(champions)
-        time.sleep(1)
+        time.sleep(0.1)
         all_connections[1].send(("blue Player 2").encode())
-        time.sleep(1)
+        time.sleep(0.1)
         all_connections[1].send(champions)
         to_players()
  
@@ -127,17 +127,17 @@ def print_match_summary(match: Match, p1, p2) -> None:
         time.sleep(1)
     # Print the score
     red_score, blue_score = match.score
-    time.sleep(1)
+    time.sleep(0.1)
     p1.send(str(red_score).encode())
-    time.sleep(1)
+    time.sleep(0.1)
     p1.send(str(blue_score).encode())
-    time.sleep(1)
+    time.sleep(0.1)
     p2.send(str(red_score).encode())
-    time.sleep(1)
+    time.sleep(0.1)
     p2.send(str(blue_score).encode())
-    time.sleep(1)
+    time.sleep(0.1)
     db[0].send(str(red_score).encode())
-    time.sleep(1)
+    time.sleep(0.1)
     db[0].send(str(blue_score).encode())
     end_clean_up()
 
@@ -148,7 +148,6 @@ def end_clean_up():
     all_connections.pop(0)
     player1.clear()
     player2.clear()
-    print(len(all_connections))
     if len(all_connections) < 2:
         main()
     else:

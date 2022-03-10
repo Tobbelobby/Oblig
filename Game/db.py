@@ -25,7 +25,7 @@ save = { "CHAMPIONS":
 }
 
 
-with open('test.json', 'r') as f:
+with open('db.json', 'r') as f:
         data_save = json.load(f)
 
 def filter_sending():
@@ -111,7 +111,7 @@ def match_result():
     save_to_json()
 
 def save_to_json():
-    with open('test.json', 'w') as data:
+    with open('db.json', 'w') as data:
         data.write(json.dumps(data_save, indent=4, sort_keys=True))
 
 
